@@ -1,25 +1,55 @@
 <!DOCTYPE html>
-<html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Opennmsforge" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Opennmsforge" %>">
-    <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= javascript_include_tag "application" %>
+  	<meta charset="utf-8" />
+
+  	<!-- Uncomment to make IE8 render like IE7 -->
+  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
-    <%= yield(:head) %>
   </head>
-  <body class="<%= controller_name %> <%= action_name %>">
-    <div id="container" class="container">
-      <header>
-        <%= render 'layouts/navigation' %>
-        <%= render 'layouts/messages' %>
-      </header>
-      <div id="main" role="main">
-        <%= yield %>
+
+  <body>
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <%= link_to "OpenNMS Config Packs", root_path, class: "brand" %>
+        <ul class="nav pull-left">
+          <li><%= link_to "All Packs", config_packs_path %></li>
+        </ul>
+        <ul class="nav pull-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <%= current_user.name %>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
+                    <li><%= link_to 'Edit account', edit_user_registration_path %></li>
+                </ul>
+            </li>
+        </ul>
       </div>
-      <footer>
-      </footer>
-    </div> <!--! end of #container -->
+    </div>
+
+
+    <div class="container">
+        <!-- START CONTENT YIELD -->
+        <%= yield %>
+        <!-- END CONTENT YIELD -->
+    </div>
+
+    
+    <%= javascript_include_tag "application" %>
   </body>
 </html>

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626171943) do
+ActiveRecord::Schema.define(:version => 20130626182530) do
+
+  create_table "config_packs", :force => true do |t|
+    t.string   "name"
+    t.text     "summary"
+    t.text     "install"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "config_packs", ["user_id"], :name => "index_config_packs_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

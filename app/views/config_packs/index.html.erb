@@ -1,0 +1,33 @@
+<h1>All OpenNMS Config Packs</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Summary</th>
+      <th>User</th>
+      <th width="45">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+<% @config_packs.each do |config_pack| %>
+    <tr>
+      <td><%= link_to config_pack.name, config_pack %></td>
+      <td><%= truncate(config_pack.summary, length: 17, separator: ' ') %></td>
+      <td><%= config_pack.user.name %></td>
+      <td>
+        <div class="btn-group">
+          <%= link_to raw('<i class="icon-edit"></i>'), edit_config_pack_path(config_pack), class: "btn btn-mini" %>
+          <%= link_to raw('<i class="icon-remove"></i>'), config_pack, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini" %>
+          <%= link_to raw('<i class="icon-eye-open"></i>'), config_pack, class: "btn btn-mini" %>
+        </div>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'Create A Config Pack', new_config_pack_path, class: "btn btn-primary" %>
