@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
     def require_owner
       object = instance_variable_get("@#{self.controller_name.singularize}")
+      logger.info "@#{self.controller_name.singularize}"
       unless current_user && object.is_owned_by?(current_user)
         flash[:alert] = "You do not have access to that resource."
         redirect_to root_url

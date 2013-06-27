@@ -15,23 +15,23 @@
 
             <div class="field">
                 <%= f.label :name %><br />
-                <%= f.text_field :name %>
-            </div>
-            <div class="field">
-                <%= f.label :summary %><br />
-                <%= f.text_area :summary %>
-            </div>
-            <div class="field">
-                <%= f.label :install %><br />
-                <%= f.text_area :install %>
+                <%= f.text_field :name, class: "input-xlarge" %>
             </div>
             <div class="field">
                 <%= f.label :vendor %><br />
-                <%= f.text_field :vendor %>
+                <%= f.text_field :vendor, class: "input-large" %>
             </div>
             <div class="field">
                 <%= f.label :product %><br />
-                <%= f.text_field :product %>
+                <%= f.text_field :product, class: "input-large" %>
+            </div>
+            <div class="field">
+                <%= f.label :summary %><br />
+                <%= f.text_area :summary, class: "input-block-level"  %>
+            </div>
+            <div class="field">
+                <%= f.label :install %><br />
+                <%= f.text_area :install, class: "input-block-level"  %>
             </div>
 
             <div class="actions">

@@ -1,7 +1,7 @@
 class ConfigPacksController < ApplicationController
   before_filter :authorize_signed_in, :except => [:index, :show, :most_popular]
-  before_filter :require_owner, :only => [:edit, :update, :destroy]
   before_filter :get_config_pack, :only => [:show, :edit, :update, :destroy, :comment]
+  before_filter :require_owner, :only => [:edit, :update, :destroy]
 
 
   # GET /config_packs
