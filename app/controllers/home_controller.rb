@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @popular_packs = ConfigPack.joins(:pack_overall_average).order('rating_caches.avg DESC').limit(10)
+    @recent_packs = ConfigPack.order(:updated_at).limit(10)
   end
 end

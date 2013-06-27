@@ -119,22 +119,18 @@
 
     <% @config_pack.comments.each do |comment| %>
         <div class="well">
-        <div class="row-fluid">
-            <div class="span2">
-                <%= gravatar_image_tag(comment.user.email, alt: comment.user.name, gravatar: { size: 45 }) %> <br/>
-                <%= comment.user.name %><br/>
-                Since <%= comment.user.created_at.to_s(:month_and_year) %>
-            </div>
-            <div class="span10">
-                <p class="lead"><%= comment.title %> by </p>
-                <p><%= comment.comment %></p>
+            <div class="row-fluid">
+                <div class="span2">
+                    <%= gravatar_image_tag(comment.user.email, alt: comment.user.name, gravatar: { size: 45 }) %> <br/>
+                    <%= comment.user.name %><br/>
+                    Since <%= comment.user.created_at.to_s(:month_and_year) %>
+                </div>
+                <div class="span10">
+                    <p class="lead"><%= comment.title %></p>
+                    <p><%= comment.comment %></p>
+                </div>
             </div>
         </div>
-        </div>
-        <hr/>
-
-
-        <p></p>
     <% end %>
 
 

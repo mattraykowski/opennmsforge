@@ -94,9 +94,8 @@ class ConfigPacksController < ApplicationController
     redirect_to @config_pack
   end
 
-  # GET /config_packs/most_popular
+  # GET /popular
   def most_popular
-    #Car.joins(:engine_average).order('rating_caches.avg DESC')
     @config_packs = ConfigPack.joins(:pack_overall_average).order('rating_caches.avg DESC').page(params[:page]).per(10)
 
     respond_to do |format|
