@@ -3,6 +3,8 @@
     <tr>
       <th>Name</th>
       <th>Summary</th>
+      <th>Vendor</th>
+      <th>Product</th>
       <th>User</th>
       <th>Rating</th>
       <th width="45">Actions</th>
@@ -13,7 +15,9 @@
 <% @config_packs.each do |config_pack| %>
     <tr>
       <td><%= link_to config_pack.name, config_pack %></td>
-      <td><%= truncate(config_pack.summary, length: 30, separator: ' ') %></td>
+      <td><%= truncate(config_pack.summary, length: 60, separator: ' ') %></td>
+      <td><%= truncate(config_pack.vendor, length: 20, separator: ' ') %></td>
+      <td><%= truncate(config_pack.product, length: 20, separator: ' ') %></td>
       <td><%= config_pack.user.name %></td>
       <td><%= rating_for config_pack, "pack_overall" %></td>
       <td>

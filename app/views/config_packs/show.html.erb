@@ -6,14 +6,30 @@
             <dt>Name:</dt>
             <dd><%= @config_pack.name %></dd>
 
-            <dt>Uploaded By:</dt>
-            <dd><%= @config_pack.user.name %></dd>
-
             <dt>Last Updated:</dt>
             <dd><%= distance_of_time_in_words @config_pack.updated_at, Date.today %> ago</dd>
 
             <dt>Rating:</dt>
             <dd><%= rating_for @config_pack, "pack_overall" %></dd>
+
+            <dt>Vendor:</dt>
+            <dd><%= @config_pack.vendor %></dd>
+
+            <dt>Product:</dt>
+            <dd><%= @config_pack.product %></dd>
+
+            <% if user_signed_in? %>
+                <% if @config_pack.user == current_user %>
+            <dt>Actions</dt>
+            <dd>
+                <div class="btn-group">
+                    <%= link_to raw('<i class="icon-edit"></i>'), edit_config_pack_path(@config_pack), class: "btn btn-mini" %>
+                    <%= link_to raw('<i class="icon-remove"></i>'), @config_pack, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini" %>
+                </div>
+            </dd>
+                <% end %>
+            <% end %>
+
         </dl>
     </div>
     <div class="span4">

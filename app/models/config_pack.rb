@@ -2,11 +2,13 @@ class ConfigPack < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :user
-  attr_accessible :install, :name, :summary, :updated_at, :created_at
+  attr_accessible :install, :name, :summary, :vendor, :product, :updated_at, :created_at
 
   validates :user,    presence: true
   validates :name,    presence: true
   validates :summary, presence: true
+  validates :vendor, presence: true
+  validates :product, presence: true
 
   DIMENSIONS = ["pack_overall"]
   letsrate_rateable *DIMENSIONS

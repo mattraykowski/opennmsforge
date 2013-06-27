@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20130626202515358) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "vendor"
+    t.string   "product"
   end
 
   add_index "config_packs", ["user_id"], :name => "index_config_packs_on_user_id"
