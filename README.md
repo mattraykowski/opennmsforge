@@ -14,7 +14,6 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 * Add category tags
 * Add working version tags
 * Solr searching
-* Add has_many to user for config packs
 * Add contributor box to config pack details page
 * Add tabs to config pack details page
 ** Data Collection
@@ -23,6 +22,7 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 ** Scripts
 ** Reports
 * Refactor comments visuals
+
 
 
 

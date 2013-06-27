@@ -1,32 +1,76 @@
 <p id="notice"><%= notice %></p>
 
-<dl class="dl-horizontal">
-    <dt>Name:</dt>
-    <dd><%= @config_pack.name %></dd>
+<div class="row-fluid">
+    <div class="span8">
+        <dl class="dl-horizontal">
+            <dt>Name:</dt>
+            <dd><%= @config_pack.name %></dd>
 
-    <dt>Uploaded By:</dt>
-    <dd><%= @config_pack.user.name %></dd>
+            <dt>Uploaded By:</dt>
+            <dd><%= @config_pack.user.name %></dd>
 
-    <dt>Last Updated:</dt>
-    <dd><%= distance_of_time_in_words @config_pack.updated_at, Date.today %> ago</dd>
+            <dt>Last Updated:</dt>
+            <dd><%= distance_of_time_in_words @config_pack.updated_at, Date.today %> ago</dd>
 
-    <dt>Rating:</dt>
-    <dd><%= rating_for @config_pack, "pack_overall" %></dd>
-</dl>
-
-<div class="tabbable"> <!-- Only required for left/right tabs -->
-  <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
-    <li><a href="#tab-install" data-toggle="tab">Install Docs</a></li>
-  </ul>
-  <div class="tab-content">
-    <div class="tab-pane active" id="tab-summary">
-      <p><%= @config_pack.summary %></p>
+            <dt>Rating:</dt>
+            <dd><%= rating_for @config_pack, "pack_overall" %></dd>
+        </dl>
     </div>
-    <div class="tab-pane" id="tab-install">
-      <p><%= @config_pack.install %></p>
+    <div class="span4">
+        <div class="well">
+            <div class="row-fluid">
+                <div class="span3">
+                    <%= gravatar_image_tag(@config_pack.user.email, alt: @config_pack.user.name) %>
+                </div>
+                <div class="span3">
+                    <dl>
+                        <dt>Name:</dt>
+                        <dd><%= @config_pack.user.name %></dd>
+
+                        <dt>Member Since:</dt>
+                        <dd><%= @config_pack.user.created_at.to_s(:month_and_year) %></dd>
+
+                        <dt>Contributions</dt>
+                        <dd><%= @config_pack.user.config_packs.size %></dd>
+                    </dl>
+                </div>
+            </div>
+
+
+        </div>
     </div>
-  </div>
+</div>
+<div class="row-fluid">
+    <div class="span8">
+        <div class="well">
+            <h4>Tags</h4>
+        </div>
+    </div>
+    <div class="span4">
+        <div class="well">
+            <h4>Versions</h4>
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="well">
+            <div class="tabbable"> <!-- Only required for left/right tabs -->
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
+                    <li><a href="#tab-install" data-toggle="tab">Install Docs</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab-summary">
+                        <p><%= @config_pack.summary %></p>
+                    </div>
+                    <div class="tab-pane" id="tab-install">
+                        <p><%= @config_pack.install %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <% if user_signed_in? %>
@@ -36,11 +80,28 @@
 <% end %>
 <%= link_to 'Back', config_packs_path, class: "btn btn-primary btn-small" %>
 
-<% @config_pack.comments.each do |comment| %>
-  <hr/>
-  <p class="lead"><%= comment.title %> by <%= comment.user.name %></p>
-  <p><%= comment.comment %></p>
-<% end %>
+    <h4>Comments</h4>
+
+    <% @config_pack.comments.each do |comment| %>
+        <div class="well">
+        <div class="row-fluid">
+            <div class="span2">
+                <%= gravatar_image_tag(comment.user.email, alt: comment.user.name, gravatar: { size: 45 }) %> <br/>
+                <%= comment.user.name %><br/>
+                Since <%= comment.user.created_at.to_s(:month_and_year) %>
+            </div>
+            <div class="span10">
+                <p class="lead"><%= comment.title %> by </p>
+                <p><%= comment.comment %></p>
+            </div>
+        </div>
+        </div>
+        <hr/>
+
+
+        <p></p>
+    <% end %>
+
 
 <%= form_tag("/config_packs/"+@config_pack.id.to_s+"/comment", :method => "post", :class => "form-horizontal") do %>
   <br/><br/>

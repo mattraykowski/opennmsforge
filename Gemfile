@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'letsrate'
 gem 'acts_as_commentable'
 gem 'kaminari'
+gem 'gravatar_image_tag'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
