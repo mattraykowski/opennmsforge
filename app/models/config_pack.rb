@@ -2,6 +2,8 @@ class ConfigPack < ActiveRecord::Base
   acts_as_commentable
 
   belongs_to :user
+  has_many :event_files
+
   attr_accessible :install, :name, :summary, :vendor, :product, :updated_at, :created_at
 
   validates :user,    presence: true

@@ -1,0 +1,2 @@
+module EventFilesHelper
+end

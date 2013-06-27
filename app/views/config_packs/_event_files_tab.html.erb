@@ -1,0 +1,17 @@
+<% if user_signed_in? %>
+  <% if @config_pack.user == current_user %>
+    <% if @config_pack.event_files.size == 0 %>
+      <%= link_to "Add Event File", root_url, class: "btn btn-success btn-large" %>
+    <% else %>
+      small button
+    <% end %>
+  <% else %>
+    <% if @config_pack.event_files.size == 0 %>
+      No Event Files.
+    <% end %>
+  <% end %>
+<% else %>
+  <% if @config_pack.event_files.size == 0 %>
+    No Event Files.
+  <% end %>
+<% end %>

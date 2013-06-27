@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(:version => 20130626202515358) do
 
   add_index "config_packs", ["user_id"], :name => "index_config_packs_on_user_id"
 
+  create_table "event_files", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.integer  "config_pack_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "event_files", ["config_pack_id"], :name => "index_event_files_on_config_pack_id"
+
   create_table "rates", :force => true do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"

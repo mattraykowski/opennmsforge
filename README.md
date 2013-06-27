@@ -10,20 +10,17 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 
 * Title helper.
 * Title bar active status helper
-* Add gravatar support
 * Add category tags
 * Add working version tags
 * Solr searching
-* Add contributor box to config pack details page
 * Add tabs to config pack details page
 ** Data Collection
 ** Graphs
 ** Events
 ** Scripts
 ** Reports
-* Refactor comments visuals
-
-
+* Pretty up the user profile page for public and editing.
+** Link contributor things to the public page.
 
 
 
