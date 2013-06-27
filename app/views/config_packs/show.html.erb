@@ -77,10 +77,10 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab-summary">
-                        <p><%= @config_pack.summary %></p>
+                        <%=  textilize(@config_pack.summary).html_safe %>
                     </div>
                     <div class="tab-pane" id="tab-install">
-                        <p><%= @config_pack.install %></p>
+                        <%= textilize(@config_pack.install).html_safe %>
                     </div>
                 </div>
             </div>
