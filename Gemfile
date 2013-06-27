@@ -8,10 +8,14 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass-rails'
   gem 'bootstrap-sass'
+  gem 'kaminari-bootstrap'
 end
 gem 'jquery-rails'
 gem 'devise'
 gem 'figaro'
+gem 'letsrate'
+gem 'acts_as_commentable'
+gem 'kaminari'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

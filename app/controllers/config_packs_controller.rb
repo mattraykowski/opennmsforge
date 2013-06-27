@@ -1,13 +1,13 @@
 class ConfigPacksController < ApplicationController
-  before_filter :authorize_signed_in, :except => [:index, :show]
+  before_filter :authorize_signed_in, :except => [:index, :show, :most_popular]
   before_filter :require_owner, :only => [:edit, :update, :destroy]
-  before_filter :get_config_pack, :only => [:show, :edit, :update, :destroy]
+  before_filter :get_config_pack, :only => [:show, :edit, :update, :destroy, :comment]
 
 
   # GET /config_packs
   # GET /config_packs.json
   def index
-    @config_packs = ConfigPack.all
+    @config_packs = ConfigPack.order(:name).page(params[:page]).per(10)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,6 +84,24 @@ class ConfigPacksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to config_packs_url }
       format.json { head :no_content }
+    end
+  end
+
+  # DELETE /config_packs/1/comment
+  def comment
+    @config_pack.comments.create(title: params[:title], comment: params[:body], user: current_user)
+    #@config_pack.comments.save
+    redirect_to @config_pack
+  end
+
+  # GET /config_packs/most_popular
+  def most_popular
+    #Car.joins(:engine_average).order('rating_caches.avg DESC')
+    @config_packs = ConfigPack.joins(:pack_overall_average).order('rating_caches.avg DESC').page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @config_packs }
     end
   end
 

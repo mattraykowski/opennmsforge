@@ -16,7 +16,6 @@
   	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -26,8 +25,10 @@
         <%= link_to "OpenNMS Config Packs", root_path, class: "brand" %>
         <ul class="nav pull-left">
           <li><%= link_to "All Packs", config_packs_path %></li>
+          <li><%= link_to "Popular Packs", "/popular" %></li>
         </ul>
         <ul class="nav pull-right">
+            <% if user_signed_in? %>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <%= current_user.name %>
@@ -38,6 +39,10 @@
                     <li><%= link_to 'Edit account', edit_user_registration_path %></li>
                 </ul>
             </li>
+            <% else %>
+            <li><%= link_to "Login", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+            <% end %>
         </ul>
       </div>
     </div>

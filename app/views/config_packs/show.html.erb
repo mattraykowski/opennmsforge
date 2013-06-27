@@ -5,14 +5,48 @@
     <dd><%= @config_pack.name %></dd>
 
     <dt>Uploaded By:</dt>
-    <dd>@config_pack.user.name</dd>
+    <dd><%= @config_pack.user.name %></dd>
 
-    <dt>Summary:</dt>
-    <dd><%= @config_pack.summary %></dd>
+    <dt>Last Updated:</dt>
+    <dd><%= distance_of_time_in_words @config_pack.updated_at, Date.today %> ago</dd>
 
-    <dt>Installation Instructions:</dt>
-    <dd><%= @config_pack.install %></dd>
+    <dt>Rating:</dt>
+    <dd><%= rating_for @config_pack, "pack_overall" %></dd>
 </dl>
 
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab-summary" data-toggle="tab">Summary</a></li>
+    <li><a href="#tab-install" data-toggle="tab">Install Docs</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-summary">
+      <p><%= @config_pack.summary %></p>
+    </div>
+    <div class="tab-pane" id="tab-install">
+      <p><%= @config_pack.install %></p>
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? %>
+  <% if @config_pack.user == current_user %>
 <%= link_to 'Edit', edit_config_pack_path(@config_pack), class: "btn btn-warning btn-small" %>
+  <% end %>
+<% end %>
 <%= link_to 'Back', config_packs_path, class: "btn btn-primary btn-small" %>
+
+<% @config_pack.comments.each do |comment| %>
+  <hr/>
+  <p class="lead"><%= comment.title %> by <%= comment.user.name %></p>
+  <p><%= comment.comment %></p>
+<% end %>
+
+<%= form_tag("/config_packs/"+@config_pack.id.to_s+"/comment", :method => "post", :class => "form-horizontal") do %>
+  <br/><br/>
+  <fieldset>
+      <%= text_field_tag "title", nil, :class => "input-block-level", :placeholder => "Title" %>
+      <%= text_area_tag "body", nil, :rows => 5, :class => "input-block-level", :placeholder => "Comment text..."  %>
+      <%= submit_tag "Add Comment", :class => "btn btn-primary" %>
+  </fieldset>
+<% end %>

@@ -1,6 +1,9 @@
 Opennmsforge::Application.routes.draw do
-  resources :config_packs
+  match '/rate' => 'rater#create', :as => 'rate'
 
+  resources :config_packs
+  post '/config_packs/:id/comment' => "config_packs#comment"
+  get '/popular' => "config_packs#most_popular"
 
   authenticated :user do
     root :to => 'home#index'
