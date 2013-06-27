@@ -1,7 +1,9 @@
 Opennmsforge::Application.routes.draw do
   match '/rate' => 'rater#create', :as => 'rate'
 
-  resources :config_packs
+  resources :config_packs do
+    resources :event_files
+  end
   post '/config_packs/:id/comment' => "config_packs#comment"
   get '/popular' => "config_packs#most_popular"
 

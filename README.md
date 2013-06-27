@@ -21,6 +21,8 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 ** Reports
 * Pretty up the user profile page for public and editing.
 ** Link contributor things to the public page.
+* rating plugin: can we toggle when you can click to rate?
+* "action required" or "report to admins"
 
 
 

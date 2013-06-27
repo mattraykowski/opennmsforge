@@ -1,0 +1,36 @@
+<% if user_signed_in? %>
+  <% if @config_pack.user == current_user %>
+    <% if file_collection.size == 0 %>
+      <%= link_to "Add #{file_type} File", dest_url, class: "btn btn-success btn-large" %>
+    <% else %>
+      <%= link_to "Add Another #{file_type} File", dest_url, class: "btn btn-success btn-mini" %>
+    <% end %>
+  <% else %>
+    <% if file_collection.size == 0 %>
+      No Event Files.
+    <% end %>
+  <% end %>
+<% else %>
+  <% if file_collection.size == 0 %>
+    No Event Files.
+  <% end %>
+<% end %>
+
+<% unless file_collection.size == 0 %>
+<div class="accordion" id="accordion<%= file_type %>">
+  <% file_collection.each_with_index do |file,index| %>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<%= file_type %>" href="#collapse<%= index %>">
+        <%= file.name %>
+      </a>
+    </div>
+    <div id="collapse<%= index %>" class="accordion-body collapse <%= 'in' if index == 0 %>">
+      <div class="accordion-inner">
+          <%= CodeRay.scan(file.content, :xml).div(css: :class).html_safe %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<% end %>

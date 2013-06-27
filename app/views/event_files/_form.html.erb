@@ -1,0 +1,30 @@
+<div class="row-fluid">
+    <div class="span12">
+        <%= form_for [@config_pack, @event_file], class: "form-horizontal" do |f| %>
+            <% if @event_file.errors.any? %>
+                <div id="error_explanation">
+                    <h2><%= pluralize(@event_file.errors.count, "error") %> prohibited this event file from being saved:</h2>
+
+                    <ul>
+                        <% @event_file.errors.full_messages.each do |msg| %>
+                            <li><%= msg %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
+
+            <div class="field">
+                <%= f.label :name %><br />
+                <%= f.text_field :name, class: "input-xlarge" %>
+            </div>
+            <div class="field">
+                <%= f.label :content %><br />
+                <%= f.text_area :content, class: "input-block-level" %>
+            </div>
+
+            <div class="actions">
+                <%= f.submit %>
+            </div>
+        <% end %>
+    </div>
+</div>

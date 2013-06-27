@@ -98,10 +98,10 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab-eventfiles">
-                      <%= render "event_files_tab" %>
+                        <%= render partial: "files_tab_partial", locals: { file_collection: @config_pack.event_files, file_type: "Event", dest_url: new_config_pack_event_file_path(@config_pack)} %>
                     </div>
                     <div class="tab-pane" id="tab-collectionfiles">
-                        <%= render "collection_files_tab" %>
+                        <%= render partial: "files_tab_partial", locals: { file_collection: @config_pack.event_files, file_type: "Collection", dest_url: new_config_pack_event_file_path(@config_pack)} %>
                     </div>
                 </div>
             </div>
