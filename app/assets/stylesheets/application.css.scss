@@ -13,3 +13,11 @@
 */
 
 @import "bootstrap";
+
+.nav-pills.red > .active > a, .nav-pills.red > .active > a:hover, , .nav-pills.red > .active > a:focus {
+  background-color: red;
+}
+
+.nav-pills.green > .active > a, .nav-pills.green > .active > a:hover, , .nav-pills.green > .active > a:focus {
+  background-color: #46a546;
+}

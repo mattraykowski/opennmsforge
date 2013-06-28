@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
   <% if @config_pack.user == current_user %>
     <% if file_collection.size == 0 %>
-      <%= link_to "Add #{file_type} File", dest_url, class: "btn btn-success btn-large" %>
+      <%= link_to "Add #{file_type} Snippet", dest_url, class: "btn btn-success btn-large" %>
     <% else %>
-      <%= link_to "Add Another #{file_type} File", dest_url, class: "btn btn-success btn-mini" %>
+      <%= link_to "Add Another #{file_type} Snippet", dest_url, class: "btn btn-success btn-mini" %>
     <% end %>
   <% else %>
     <% if file_collection.size == 0 %>

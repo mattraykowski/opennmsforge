@@ -23,6 +23,11 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 ** Link contributor things to the public page.
 * rating plugin: can we toggle when you can click to rate?
 * "action required" or "report to admins"
+* allow the html table in all packs to be sorted.
+* Create Pack button on home page and/or on the top navbar
+* fix the visuals for the edit config pack page.
 
+PUT "pre-alpha" notice on the home page in a bootstrap alert and put it in the top navbar!!
 
+Markus wants 't-shirt workflow'
 
