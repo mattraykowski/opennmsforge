@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: config_packs
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  summary    :text
+#  install    :text
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  vendor     :string(255)
+#  product    :string(255)
+#
+
 class ConfigPack < ActiveRecord::Base
   acts_as_commentable
 

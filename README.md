@@ -26,6 +26,7 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 * allow the html table in all packs to be sorted.
 * Create Pack button on home page and/or on the top navbar
 * fix the visuals for the edit config pack page.
+* clean up rails_best_practices results, e.g. law of demeter.
 
 PUT "pre-alpha" notice on the home page in a bootstrap alert and put it in the top navbar!!
 

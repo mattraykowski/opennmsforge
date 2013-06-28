@@ -31,6 +31,9 @@ group :development do
   gem 'rb-fchange', :require=>false
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
+  gem 'rails_best_practices'
+  gem 'annotate', '>=2.5.0'
+  gem 'railroady'
 end
 group :development, :test do
   gem 'factory_girl_rails'
