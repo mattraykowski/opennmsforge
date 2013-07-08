@@ -1,3 +1,14 @@
 <h3>User</h3>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
+<% if @user.ogp %>
+<p>OGP: <i class="icon icon-ok"></i></p>
+<% end %>
+
+<p>OCA: 
+<% if @user.ogp %>
+<i class="icon icon-ok"></i>
+<% else %>
+<i class="icon icon-remove"></i>
+<% end %>
+</p>

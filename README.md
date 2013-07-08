@@ -20,13 +20,15 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 ** Scripts
 ** Reports
 * Pretty up the user profile page for public and editing.
-** Link contributor things to the public page.
+** Link contributor name (in lists and details) to the public profile page.
+** Link contribution count to a list of contributions.
 * rating plugin: can we toggle when you can click to rate?
 * "action required" or "report to admins"
 * allow the html table in all packs to be sorted.
 * Create Pack button on home page and/or on the top navbar
 * fix the visuals for the edit config pack page.
 * clean up rails_best_practices results, e.g. law of demeter.
+* add list sorting for the all packs list.
 
 PUT "pre-alpha" notice on the home page in a bootstrap alert and put it in the top navbar!!
 
@@ -38,6 +40,7 @@ Markus wants 't-shirt workflow'
 * Fix the failing tests:
 ** Invalid email/password flash message
 ** I am not logged in feature
-* Config Packs Controller Tests
-** Fix existing
-** Additional logic
+
+* Admin Role
+** Add the role
+** Restrict user param edits on ogp, oca and admin fields

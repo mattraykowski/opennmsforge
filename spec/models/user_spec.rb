@@ -25,6 +25,14 @@ describe User do
   subject { @user }
 
   it { should be_valid }
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+  it { should respond_to(:encrypted_password) }
+
+  it { should respond_to(:config_packs) }
+  it { should respond_to(:name) }
+  it { should respond_to(:oca) }
+  it { should respond_to(:ogp) }
 
   describe "when email is not present" do
     before { @user.email = " " }
@@ -64,11 +72,6 @@ describe User do
     it { should_not be_valid }
   end
 
-  describe "passwords" do
-    it { should respond_to(:password) }
-    it { should respond_to(:password_confirmation) }
-  end
-
   describe "password validations" do
     describe "when password is blank" do
       before do
@@ -94,12 +97,16 @@ describe User do
   end
 
   describe "password encryption" do
-    it { should respond_to(:encrypted_password) }
-
     it "should set the encrypted password attribute" do
       @user.encrypted_password.should_not be_blank
     end
-
   end
 
+  it "should default OCA to false" do
+    @user.oca.should == false
+  end
+
+  it "should default OGP to false" do
+    @user.ogp.should == false
+  end
 end
