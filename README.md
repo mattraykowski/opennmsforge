@@ -32,3 +32,12 @@ PUT "pre-alpha" notice on the home page in a bootstrap alert and put it in the t
 
 Markus wants 't-shirt workflow'
 
+* Add the OCA Column
+* Add the OGP Column
+
+* Fix the failing tests:
+** Invalid email/password flash message
+** I am not logged in feature
+* Config Packs Controller Tests
+** Fix existing
+** Additional logic

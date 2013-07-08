@@ -5,6 +5,8 @@ FactoryGirl.define do
     name "MyString"
     summary "MyText"
     install "MyText"
-    user nil
+    vendor "MyVendor"
+    product "MyProduct"
+    user
   end
 end
