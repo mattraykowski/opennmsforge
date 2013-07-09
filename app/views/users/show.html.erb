@@ -8,7 +8,7 @@
     <div class="span10">
         <div class="well">
             <% if @user.config_packs.size > 0 %>
-              <%= render partial: "shared/pack_list_short", locals: { pack_collection: @user.config_packs } %>
+              <%= render partial: "shared/pack_list", locals: { pack_collection: @user.config_packs } %>
             <% else %>
               <p>User has contributed no config packs yet.</p>
             <% end %>

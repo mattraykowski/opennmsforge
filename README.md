@@ -19,9 +19,6 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 ** Events
 ** Scripts
 ** Reports
-* Pretty up the user profile page for public and editing.
-** Link contributor name (in lists and details) to the public profile page.
-** Link contribution count to a list of contributions.
 * rating plugin: can we toggle when you can click to rate?
 * "action required" or "report to admins"
 * allow the html table in all packs to be sorted.
@@ -33,9 +30,6 @@ http://www.opennms.org/wiki/Dev-Jam_2013/OpenNMS_Config_Forge
 PUT "pre-alpha" notice on the home page in a bootstrap alert and put it in the top navbar!!
 
 Markus wants 't-shirt workflow'
-
-* Add the OCA Column
-* Add the OGP Column
 
 * Fix the failing tests:
 ** Invalid email/password flash message

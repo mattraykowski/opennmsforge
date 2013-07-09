@@ -9,8 +9,9 @@
             <% end %>
 
             <% if user.oca %>
-            <a href="#" class="tooltiplink" data-original-title="OpenNMS Contributor Agreement"><%= image_tag("oca_checklist.png", size: "16x16", alt: "OpenNMS Contributor Agreement") %></a> <br/>
+            <a href="#" class="tooltiplink" data-original-title="OpenNMS Contributor Agreement"><%= image_tag("oca_checklist.png", size: "16x16", alt: "OpenNMS Contributor Agreement") %></a>
             <% end %>
+            <br />
 
             <strong>Member Since</strong> <br/>
             <%= user.created_at.to_s(:month_and_year) %> <br/>
