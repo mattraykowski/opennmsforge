@@ -3,10 +3,10 @@
 <div class="row-fluid">
     <div class="span6">
         <h5>Most Popular Packs</h5>
-        <%= render partial: "pack_list", locals: { pack_collection: @popular_packs } %>
+        <%= render partial: "shared/pack_list", locals: { pack_collection: @popular_packs } %>
     </div>
     <div class="span6">
         <h5>Recently Added/Updated Packs</h5>
-        <%= render partial: "pack_list", locals: { pack_collection: @recent_packs } %>
+        <%= render partial: "shared/pack_list", locals: { pack_collection: @recent_packs } %>
     </div>
 </div>

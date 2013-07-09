@@ -15,3 +15,5 @@
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require_tree .
+
+$(".tooltiplink").tooltip({placement: "bottom"});

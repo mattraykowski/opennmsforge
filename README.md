@@ -44,3 +44,8 @@ Markus wants 't-shirt workflow'
 * Admin Role
 ** Add the role
 ** Restrict user param edits on ogp, oca and admin fields
+
+Attributions:
+
+Polo Shirt Icon provided by FatCow Web Hosting (CC-BY 3.0) (ogp_shirt_polo.png) http://www.fatcow.com/
+OCA Icon (todo checklist 2) provided by Oliver Twardowski (Free for Commercial, backlink) http://www.addictedtocoffee.de/

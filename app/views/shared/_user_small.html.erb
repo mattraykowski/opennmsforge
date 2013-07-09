@@ -1,0 +1,19 @@
+        <div class="row-fluid">
+          <div class="span3">
+            <%= link_to gravatar_image_tag(user.email, alt: user.name), user %>
+          </div>
+          <div class="span8">
+            <%= link_to user.name, user %>
+            <% if user.ogp %>
+            <a href="#" class="tooltiplink" data-original-title="Order of the Green Polo"><%= image_tag("ogp_shirt_polo.png", size: "16x16", alt: "Order of the Green Polo") %></a>
+            <% end %>
+
+            <% if user.oca %>
+            <a href="#" class="tooltiplink" data-original-title="OpenNMS Contributor Agreement"><%= image_tag("oca_checklist.png", size: "16x16", alt: "OpenNMS Contributor Agreement") %></a> <br/>
+            <% end %>
+
+            <strong>Member Since</strong> <br/>
+            <%= user.created_at.to_s(:month_and_year) %> <br/>
+            <strong>Contributions</strong> <%= user.config_packs.size %>
+          </div>
+        </div>

@@ -39,19 +39,7 @@
                     <h4>Contributor</h4>
                 </div>
             </div>
-            <div class="row-fluid">
-                <div class="span3">
-                    <%= gravatar_image_tag(@config_pack.user.email, alt: @config_pack.user.name) %>
-                </div>
-                <div class="span4">
-                    <%= @config_pack.user.name %> <br/>
-                    <strong>Member Since</strong> <br/>
-                    <%= @config_pack.user.created_at.to_s(:month_and_year) %> <br/>
-                    <strong>Contributions</strong> <%= @config_pack.user.config_packs.size %>
-                </div>
-            </div>
-
-
+            <%= render partial: "shared/user_small", locals: { user: @config_pack.user } %>
         </div>
     </div>
 </div>

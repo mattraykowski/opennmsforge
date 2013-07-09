@@ -1,3 +1,5 @@
+<% wide = nil if local_assigns[:wide].nil? %>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -7,12 +9,14 @@
       <th>Product</th>
       <th>User</th>
       <th>Rating</th>
+      <% if wide %>
       <th width="45">Actions</th>
+      <% end %>
     </tr>
   </thead>
 
   <tbody>
-<% @config_packs.each do |config_pack| %>
+<% pack_collection.each do |config_pack| %>
     <tr>
       <td><%= link_to config_pack.name, config_pack %></td>
       <td><%= truncate(textilize(config_pack.summary), length: 60, separator: ' ').html_safe %></td>
@@ -20,6 +24,7 @@
       <td><%= truncate(config_pack.product, length: 20, separator: ' ') %></td>
       <td><%= config_pack.user.name %></td>
       <td><%= rating_for config_pack, "pack_overall" %></td>
+      <% if wide %>
       <td>
         <div class="btn-group">
           <% if user_signed_in? %>
@@ -32,14 +37,9 @@
           <%= link_to raw('<i class="icon-eye-open"></i>'), config_pack, class: "btn btn-mini" %>
         </div>
       </td>
+      <% end %>
+
     </tr>
 <% end %>
   </tbody>
 </table>
-<%= paginate @config_packs %>
-
-<br />
-
-<% if user_signed_in? %>
-  <%= link_to 'Create A Config Pack', new_config_pack_path, class: "btn btn-primary" %>
-<% end %>
