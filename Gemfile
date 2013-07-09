@@ -9,6 +9,7 @@ group :assets do
   gem 'compass-rails'
   gem 'bootstrap-sass'
   gem 'kaminari-bootstrap'
+  gem 'therubyracer'
 end
 gem 'jquery-rails'
 gem 'devise'
