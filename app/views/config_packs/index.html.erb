@@ -1,3 +1,5 @@
 <h1>All OpenNMS Config Packs</h1>
 
 <%= render partial: "shared/pack_list", locals: { pack_collection: @config_packs, wide: true } %>
+
+<%= paginate @config_packs %>
