@@ -33,6 +33,7 @@ describe User do
   it { should respond_to(:name) }
   it { should respond_to(:oca) }
   it { should respond_to(:ogp) }
+  it { should respond_to(:admin) }
 
   describe "when email is not present" do
     before { @user.email = " " }
@@ -108,5 +109,9 @@ describe User do
 
   it "should default OGP to false" do
     @user.ogp.should == false
+  end
+
+  it "should default admin to false" do
+    @user.admin.should == false
   end
 end

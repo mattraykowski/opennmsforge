@@ -39,6 +39,8 @@ Markus wants 't-shirt workflow'
 ** Add the role
 ** Restrict user param edits on ogp, oca and admin fields
 
+* Add form validations to global _messages partial.
+
 Attributions:
 
 Polo Shirt Icon provided by FatCow Web Hosting (CC-BY 3.0) (ogp_shirt_polo.png) http://www.fatcow.com/

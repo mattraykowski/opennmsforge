@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20130626202515358) do
     t.string   "name"
     t.boolean  "oca",                    :default => false
     t.boolean  "ogp",                    :default => false
+    t.boolean  "admin",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

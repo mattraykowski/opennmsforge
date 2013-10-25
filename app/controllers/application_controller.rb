@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  helper_method :is_admin?
+
   protected
 
     def require_owner
@@ -16,6 +18,21 @@ class ApplicationController < ActionController::Base
       unless user_signed_in?
         flash[:alert] = "You must be logged in."
         redirect_to new_user_session_path
+      end
+    end
+
+    def is_admin?
+      if current_user && current_user.admin
+        true
+      else
+        false
+      end
+    end
+
+    def require_admin
+      unless is_admin?
+        flash[:alert] = "You must be an admin to access this resource."
+        redirect_to root_path
       end
     end
 end
