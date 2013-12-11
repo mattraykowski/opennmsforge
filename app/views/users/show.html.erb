@@ -1,11 +1,11 @@
 <div class="row">
-    <div class="span5">
+    <div class="col-lg-3">
         <div class="well">
           <%= render partial: "shared/user_small", locals: { user: @user } %>
         </div>
     </div>
 
-    <div class="span10">
+    <div class="col-lg-9">
         <div class="well">
             <% if @user.config_packs.size > 0 %>
               <%= render partial: "shared/pack_list", locals: { pack_collection: @user.config_packs } %>

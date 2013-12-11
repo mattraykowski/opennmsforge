@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-
-<div class="row-fluid">
-    <div class="span8">
+<div class="row">
+    <div class="col-lg-8">
         <dl class="dl-horizontal">
             <dt>Name:</dt>
             <dd><%= @config_pack.name %></dd>
@@ -23,8 +21,8 @@
             <dt>Actions</dt>
             <dd>
                 <div class="btn-group">
-                    <%= link_to raw('<i class="icon-edit"></i>'), edit_config_pack_path(@config_pack), class: "btn btn-mini" %>
-                    <%= link_to raw('<i class="icon-remove"></i>'), @config_pack, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini" %>
+                    <%= link_to raw('<i class="glyphicon glyphicon-edit"></i>'), edit_config_pack_path(@config_pack), class: "btn btn-xs" %>
+                    <%= link_to raw('<i class="glyphicon glyphicon-remove"></i>'), @config_pack, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs" %>
                 </div>
             </dd>
                 <% end %>
@@ -32,10 +30,10 @@
 
         </dl>
     </div>
-    <div class="span4">
+    <div class="col-lg-4">
         <div class="well">
-            <div class="row-fluid">
-                <div class="span12">
+            <div class="row">
+                <div class="col-lg-12">
                     <h4>Contributor</h4>
                 </div>
             </div>
@@ -43,20 +41,20 @@
         </div>
     </div>
 </div>
-<div class="row-fluid">
-    <div class="span8">
+<div class="row">
+    <div class="col-lg-8">
         <div class="well">
             <h4>Tags</h4>
         </div>
     </div>
-    <div class="span4">
+    <div class="col-lg-4">
         <div class="well">
             <h4>Versions</h4>
         </div>
     </div>
 </div>
-<div class="row-fluid">
-    <div class="span12">
+<div class="row">
+    <div class="col-lg-12">
         <div class="well">
             <div class="tabbable"> <!-- Only required for left/right tabs -->
                 <ul class="nav nav-tabs">
@@ -76,8 +74,8 @@
     </div>
 </div>
 
-<div class="row-fluid">
-    <div class="span12">
+<div class="row">
+    <div class="col-lg-12">
         <div class="well">
             <div class="tabbable"> <!-- Only required for left/right tabs -->
                 <ul class="nav nav-tabs">
@@ -98,22 +96,22 @@
 </div>
 <% if user_signed_in? %>
   <% if @config_pack.user == current_user %>
-<%= link_to 'Edit', edit_config_pack_path(@config_pack), class: "btn btn-warning btn-small" %>
+<%= link_to 'Edit', edit_config_pack_path(@config_pack), class: "btn btn-warning btn-sm" %>
   <% end %>
 <% end %>
-<%= link_to 'Back', config_packs_path, class: "btn btn-primary btn-small" %>
+<%= link_to 'Back', config_packs_path, class: "btn btn-primary btn-sm" %>
 
     <h4>Comments</h4>
 
     <% @config_pack.comments.each do |comment| %>
         <div class="well">
-            <div class="row-fluid">
-                <div class="span2">
+            <div class="row">
+                <div class="col-sm-2">
                     <%= gravatar_image_tag(comment.user.email, alt: comment.user.name, gravatar: { size: 45 }) %> <br/>
                     <%= comment.user.name %><br/>
                     Since <%= comment.user.created_at.to_s(:month_and_year) %>
                 </div>
-                <div class="span10">
+                <div class="col-sm-10">
                     <p class="lead"><%= comment.title %></p>
                     <p><%= comment.comment %></p>
                 </div>
@@ -122,11 +120,24 @@
     <% end %>
 
 
-<%= form_tag("/config_packs/"+@config_pack.id.to_s+"/comment", :method => "post", :class => "form-horizontal") do %>
+<%= form_tag("/config_packs/#{@config_pack.id.to_s}/comment", method: 'post', class: 'form-horizontal', role: 'form') do %>
   <br/><br/>
-  <fieldset>
-      <%= text_field_tag "title", nil, :class => "input-block-level", :placeholder => "Title" %>
-      <%= text_area_tag "body", nil, :rows => 5, :class => "input-block-level", :placeholder => "Comment text..."  %>
-      <%= submit_tag "Add Comment", :class => "btn btn-primary" %>
-  </fieldset>
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+          <label for="titleField">Title</label>
+          <%= text_field_tag 'title', nil, class: 'form-control', placeholder: 'Title', id: 'titleField' %>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+          <label for="commentField">Comment</label>
+          <%= text_area_tag 'body', nil, rows: 5, class: 'form-control', placeholder: 'Comment text...', id: 'commentField' %>      
+      </div>
+  </div>
+
+  <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-8">
+          <%= submit_tag "Add Comment", :class => "btn btn-primary" %>
+      </div>
 <% end %>

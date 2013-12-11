@@ -1,42 +1,60 @@
-<div class="row-fluid">
-    <div class="span12">
-        <%= form_for(@config_pack) do |f| %>
-            <% if @config_pack.errors.any? %>
-                <div id="error_explanation">
-                    <h2><%= pluralize(@config_pack.errors.count, "error") %> prohibited this config_pack from being saved:</h2>
-
-                    <ul>
-                        <% @config_pack.errors.full_messages.each do |msg| %>
-                            <li><%= msg %></li>
-                        <% end %>
-                    </ul>
+<div class="row">
+    <div class="col-lg-12">
+        <% if @config_pack.errors.any? %>
+            <div id="error_explanation">                
+                <% @config_pack.errors.full_messages.each do |msg| %>
+                <div class="alert alert-danger">
+                    <%= msg %>
                 </div>
-            <% end %>
+                <% end %>
+            </div>
+        <% end %>
+        
+        <%= form_for(@config_pack, html: { class: 'form-horizontal', role: 'form' }) do |f| %>
+            <div class="form-group <%= field_status @config_pack, :name %>">
+                <%= f.label :name, class: 'col-sm-2 control-label' %>
+                <div class="col-sm-6">
+                    <%= f.text_field :name, class: "form-control" %>
+                </div>
+                <%= field_status_message @config_pack, :name %>
+            </div>
+        
+            <div class="form-group <%= field_status @config_pack, :name %>">
+                <%= f.label :vendor, class: 'col-sm-2 control-label' %>
+                <div class="col-sm-6">
+                    <%= f.text_field :vendor, class: "form-control" %>
+                </div>
+                <%= field_status_message @config_pack, :vendor %>
+            </div>
+        
+            <div class="form-group <%= field_status @config_pack, :name %>">
+                <%= f.label :product, class: 'col-sm-2 control-label' %>
+                <div class="col-sm-6">
+                    <%= f.text_field :product, class: "form-control" %>
+                </div>
+                <%= field_status_message @config_pack, :product %>
+            </div>
+        
+            <div class="form-group <%= field_status @config_pack, :name %>">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <%= f.label :summary %> <%= field_status_message @config_pack, :summary %>             
+                    <%= f.text_area :summary, class: 'form-control', rows: '4'  %>                                    
+                </div>
+            </div>
+        
+            <div class="form-group <%= field_status @config_pack, :name %>">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <%= f.label :install %> <%= field_status_message @config_pack, :install %>             
+                    <%= f.text_area :install, class: 'form-control', rows: '4'  %>                                    
+                </div>
+            </div>      
 
-            <div class="field">
-                <%= f.label :name %><br />
-                <%= f.text_field :name, class: "input-xlarge" %>
-            </div>
-            <div class="field">
-                <%= f.label :vendor %><br />
-                <%= f.text_field :vendor, class: "input-large" %>
-            </div>
-            <div class="field">
-                <%= f.label :product %><br />
-                <%= f.text_field :product, class: "input-large" %>
-            </div>
-            <div class="field">
-                <%= f.label :summary %><br />
-                <%= f.text_area :summary, class: "input-block-level"  %>
-            </div>
-            <div class="field">
-                <%= f.label :install %><br />
-                <%= f.text_area :install, class: "input-block-level"  %>
-            </div>
-
-            <div class="actions">
-                <%= f.submit %>
-            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-6">
+                    <%= f.submit 'Save', class: 'btn btn-primary' %>
+                    <%= link_to 'Back', config_packs_path, class: 'btn btn-warning' %>
+                </div>
+            </div>                        
         <% end %>
     </div>
 </div>
